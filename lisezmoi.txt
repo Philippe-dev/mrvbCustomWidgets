@@ -1,0 +1,128 @@
+# -- BEGIN LICENSE BLOCK ----------------------------------
+#
+# This file is part of mrvbCustomWidgets, a plugin for Dotclear 2
+#
+# © Mirovinben (http://www.mirovinben.fr/)
+# Licensed under the GPL version 2.0 license.
+# See LICENSE file or
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+#
+# -- END LICENSE BLOCK ------------------------------------
+
+origine	: (dc2)/plugins/widgets/_widgets_functions.php pour 'categories', 'text', 'lastcomments', 'lastposts', 'search', 'navigation' et 'feed'
+		: (dc2)/plugins/tags pour 'tags'
+		: (dc2)/plugins/pages pour 'pages'
+		: 'includesubcats' de Dsls pour 'subcategories'
+		: 'getPosts' dans (dc2)\inc\core\class.dc.blog.php 
+
+=============
+
+mrvbCategories :
+	- ajoute la classe CSS "mrvbcategories" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet l'exclusion d'une ou plusieurs catégories (ID séparés par "," ou par un saut de ligne) de la liste.
+	- affiche les sous-catégories comme des catégories (même liste).
+	- affiche sous forme de liste à puce (mode par défaut) ou dans un paragraphe
+		- si affichage sous forme de liste :
+			- chaque item de la liste a une classe <li class="catXXX"> où XXX est l'id de la catégorie.
+		- si affichage dans un paragraphe (<p class="list">) :
+			- chaque élément a une classe <a class="catXXX"> où XXX est l'id de la catégorie.
+			- ajoute un séparateur (<span class="separator">) complété par un espace à la fin de chaque catégorie.
+			- séparateur spécifique (<span class="last-separator">) marquant la fin.
+	- affiche ou pas dans une info-bulle ou entre parenthèses le nombre de billets de la catégorie.
+	- prend en compte ou pas le nombre de billets des sous-catégories
+	- dans le contexte d'affichage d'un billet, la classe de l'item correspondant à la catégorie du billet est : 
+		- si liste : <li class="catXXX category-current">.
+		- si paragraphe : <a class="catXXX category-current">.
+
+mrvbFeed : 
+	- ajoute la classe CSS "mrvbFeed" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet le formatage de la date ('%d/%m/%Y' par défaut).
+	  (les codes permettant de formater une date sont listés dans la doc PHP en ligne - fonction 'strftime' :  http://www.php.net/manual/fr/function.strftime.php)
+	- permet le formatage de chaque item de la liste :
+		- %date% sera remplacé par la date de publication (pas de lien vers l'entrée).
+		- %title% (valeur par défaut) sera remplacé par le titre de l'item (avec lien vers l'entrée).
+		- %date+title% sera remplacé par la date de publication + caractère de séparation + le titre de l'item (l'ensemble dans lien vers l'entrée).
+		- tout autre caractère (dont les balises html) sera conservé tel quel.
+	- permet de personnaliser le caractère séparateur ('-' par défaut) entre date et titre si utilisation du format %date+title%.
+	  (ce caractère sera complété automatiquement par un espace à gauche et un espace à droite lors de l'affichage).
+
+mrvbLastComments :
+	- ajoute la classe CSS "mrvblastcomments" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- ajoute l'option "notme" qui permet, si elle est cochée, de ne pas prendre en compte les commentaires du rédacteur du billet (décochée par défaut).
+
+mrvbLastPosts :
+	- ajoute la classe CSS "mrvblastposts" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne),
+	- ajoute l'option "selected" permettant de ne lister que les billets ayant le statut "sélectionné",
+	- ajoute un champ permettant de ne lister que les billets ayant un des types présents dans la liste (si vide = post),
+	- Si le champ "Ayant la catégorie" contient le nom d'une catégorie choisie dans la liste, seuls les billets appartenant à cette catégorie seront affichés. (par défaut, vide = pas de filtre),
+	- permet l'exclusion d'une ou plusieurs catégories (ID séparés par "," ou par un saut de ligne) de la liste. Pris en compte uniquement si aucune catégorie n'est sélectionnée dans le champ "Catégorie",
+	- dans le contexte d'affichage d'un billet, ajoute la classe "post-current" à l'item qui correspond au billet actuellement affiché.
+
+mrvbNavigation :
+	- permet de modifier/supprimer l'ID "topnav",
+	- ajoute la classe CSS "mrvbnavigation" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne),
+	- ajoute la possibilité de remplacer les textes par défaut pour 'Accueil' et 'Archives',
+	- ajoute la possibilité de choisir le(s) caractère(s) de séparation (entre <span> et </span>). Par défaut : "&nbsp;-&nbsp;".
+
+mrvbPages : 
+	- ajoute la classe CSS "mrvbpages" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet l'exclusion d'une ou plusieurs pages (ID séparés par "," ou par un saut de ligne) de la liste.
+	- affiche sous forme de liste à puce (mode par défaut) ou dans un paragraphe
+	- si affichage dans un paragraphe (<p class="list">) :
+		- ajoute un séparateur (<span class="separator">) complété par un espace à la fin de chaque mot-clé.
+		- séparateur spécifique (<span class="last-separator">) marquant la fin.
+	- dans le contexte d'affichage d'une page, la page courante se voit affectée de la classe "page-current"
+		- si liste : <li class="page-current">,
+		- si paragraphe : <span class="page-current">.
+
+mrvbSearch :
+	- permet de modifier/supprimer l'ID "search",
+	- ajoute la classe CSS "mrvbsearch" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+
+mrvbSubCategories :
+	- ajoute la classe CSS "mrvbsubcategories" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet l'exclusion d'une ou plusieurs catégories (ID séparés par "," ou par un saut de ligne) de la liste.
+	- affiche les sous-catégories sous forme de listes imbriquées.
+	- permet de n'afficher qu'un certain nombre de niveaux de l'arborescence (vide ou zéro signifie 'tous')
+	- chaque item de la liste a une classe <li class="catXXX"> où XXX est l'id de la catégorie.
+	- affiche ou pas dans une info-bulle ou entre parenthèses le nombre de billets de la catégorie.
+	- prend en compte ou pas le nombre de billets des sous-catégories
+	- dans le contexte d'affichage d'un billet, la classe de l'item correspondant à la catégorie du billet est <li class="catXXX category-current">. 
+
+mrvbSubscribe
+	CSS : <div class="syndicate mysyndicate">, <ul class="feed-atom">, <ul class="feed-rss2">, <a class="feed">
+	- propose les liens vers les flux RSS2 et vers les flux Atom.
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet de personnaliser le texte de chaque lien (si pas de texte, alors pas de lien).
+
+mrvbTags : 
+	- ajoute la classe CSS "mrvbtags" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne).
+	- permet l'exclusion d'un ou plusieurs tags séparés par "," (ou par un saut de ligne) de la liste.
+	- affiche sous forme de liste à puce (mode par défaut) ou dans un paragraphe
+	- si affichage dans un paragraphe (<p class="list">) :
+		- ajoute un séparateur (<span class="separator">) complété par un espace à la fin de chaque mot-clé.
+		- séparateur spécifique (<span class="last-separator">) marquant la fin. 
+	- permet d'afficher (ou pas) le nombre de billets pour chaque mot-clé selon deux méthodes
+		- soit entre parenthèses après chaque mot-clé,
+		- soit dans une info-bulle apparaissant au passage du pointeur de la souris sur un mot-clé.
+	- permet d'afficher (ou pas) un lien vers le récapitulatif de tous les mots-clés. Lien dans un paragraphe <p classe="goTags">.
+	- dans le contexte d'affichage d'un billet, est ajouté la classe "tag-current" à chaque mot-clé attribué au billet 
+		- si liste : <li class="tag-current">.
+		- si paragraphe : <a class="tag-current">.
+
+mrvbText : 
+	- ajoute la classe CSS "mrvbtext" et une classe personnalisable facultative,
+	- ajoute l'option "offline" (mettre hors ligne) et permet d'ajouter une classe.
+
+=============
+
+La possibilité d'exclure plusieurs catégories sous forme de liste d'URL séparées par "/" a été supprimé de cette version ainsi que le séparateur "/" dans la liste des mots-clés à exclure.

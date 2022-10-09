@@ -1,0 +1,205 @@
+# -------------------------------------
+# French translation of mrvbCustomWidgets
+# © Mirovinben (http://www.mirovinben.fr/)
+# -------------------------------------
+msgid ""
+msgstr ""
+
+msgid "Title (optional):"
+msgstr "Titre (optionnel)&nbsp;:"
+
+msgid "Default ID for this widget:"
+msgstr "ID par défaut pour ce widget&nbsp;:"
+
+msgid "To put off line"
+msgstr "Mettre hors ligne"
+
+# -------------------------------------
+
+msgid "Character(s) separating each item (if paragraph):"
+msgstr "Caractère(s) séparant chaque élément (si paragraphe)&nbsp;:"
+
+msgid "Character(s) closing the paragraph:"
+msgstr "Caractère(s) terminant le paragraphe&nbsp;:"
+
+msgid "Display Type:"
+msgstr "Type d'affichage&nbsp;:"
+
+msgid "Bulleted list"
+msgstr "Liste à puces"
+
+msgid "With entries counts:"
+msgstr "Afficher le nombre de billets&nbsp;:"
+
+msgid "Never"
+msgstr "Jamais"
+
+msgid "In balloon"
+msgstr "Dans une info-bulle"
+
+msgid "After each item"
+msgstr "Après chaque item"
+
+msgid "For information, list of blog categories with their ID:"
+msgstr "Pour information, liste des catégories du blog avec leur ID&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: categories"
+msgstr "Mrvb : catégories"
+
+msgid "categories list"
+msgstr "liste des catégories"
+
+msgid "Categories to exclude (ID separated by commas or line breaks):"
+msgstr "Catégories à exclure (ID séparés par virgules ou sauts de ligne)&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: feed reader"
+msgstr "Mrvb : lecteur de flux"
+
+msgid "list of last entries from feed (RSS or Atom)"
+msgstr "liste des dernières entrées depuis un flux (RSS ou Atom)"
+
+msgid "Format of the date:"
+msgstr "Format de la date&nbsp;:"
+
+msgid "Format of items (%date%, %title%, %date+title%):"
+msgstr "Format des items (%date%, %title%, %date+title%)&nbsp;:"
+
+msgid "Character separating date and title (only if format = %date+title%):"
+msgstr "Caractère séparant date et titre (seulement si format = %date+title%)&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: last comments"
+msgstr "Mrvb : derniers commentaires"
+
+msgid "list of last comments posted"
+msgstr "derniers commentaires postés"
+
+msgid "Except those of the post' author"
+msgstr "Excepté ceux de l'auteur du billet"
+
+# -------------------------------------
+
+msgid "Mrvb: last posts"
+msgstr "Mrvb : derniers billets"
+
+msgid "list of last entries published"
+msgstr "derniers billets publiés"
+
+msgid "Selected posts only"
+msgstr "Billets sélectionnés uniquement"
+
+msgid "Filter on one type or list of types (empty = post):"
+msgstr "Filtre sur un type ou une liste de types (vide = post)&nbsp;:"
+
+msgid "Having category:"
+msgstr "Ayant la catégorie&nbsp;:"
+
+msgid "Or categories to exclude (ID separated by commas or line breaks):"
+msgstr "Ou catégories à exclure (ID séparés par virgules ou sauts de ligne)&nbsp;:"
+
+msgid "Entries limit (0 = all):"
+msgstr "Nombre de billets maximum (0 = tous)&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: navigation links"
+msgstr "Mrvb : liens de navigation"
+
+msgid "list of navigation links"
+msgstr "liste des liens de navigation"
+
+msgid "Text for 'Home':"
+msgstr "Texte pour 'Accueil'&nbsp;:"
+
+msgid "Character(s) separating each item (empty = \' - \'):"
+msgstr "Caractère(s) séparant chaque élément (vide = \' - \')&nbsp;:"
+
+msgid "Text for 'Archives':"
+msgstr "Texte pour 'Archives'&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: pages"
+msgstr "Mrvb : pages"
+
+msgid "pages list"
+msgstr "liste des pages"
+
+msgid "Pages to exclude (ID separated by commas or line breaks):"
+msgstr "Pages à exclure (ID séparés par virgules ou sauts de ligne)&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: search engine"
+msgstr "Mrvb : moteur de recherche"
+
+msgid "search engine form"
+msgstr "formulaire de recherche"
+
+# -------------------------------------
+
+msgid "Mrvb: subcategories"
+msgstr "Mrvb : sous-catégories"
+
+msgid "hierarchical list of categories"
+msgstr "liste hiérarchisée des catégories"
+
+msgid "Maximum levels (empty or zero means all):"
+msgstr "Nombre maximum de niveaux (vide ou zéro signifie 'tous')&nbsp:"
+
+# -------------------------------------
+
+msgid "Mrvb: subscribe links"
+msgstr "Mrvb : liens de souscription"
+
+msgid "feed subscription links"
+msgstr "liens d'abonnements aux flux"
+
+msgid "Text for link \"entries Atom feed\":"
+msgstr "Texte pour le lien \"fil Atom des billets\"&nbsp:"
+
+msgid "Text for link \"entries RSS2 feed\":"
+msgstr "Texte pour le lien \"fil RSS2 des billets\"&nbsp:"
+
+msgid "Text for link \"comments Atom feed\":"
+msgstr "Texte pour le lien \"fil Atom des commentaires\"&nbsp:"
+
+msgid "Text for link \"comments RSS2 feed\":"
+msgstr "Texte pour le lien \"fil RSS2 des commentaires\"&nbsp:"
+
+msgid "Entries Atom feed"
+msgstr "Fil Atom des billets"
+
+msgid "Comments Atom feed"
+msgstr "Fil Atom des commentaires"
+
+msgid "Entries RSS2 feed"
+msgstr "Fil RSS2 des billets"
+
+msgid "Comments RSS2 feed"
+msgstr "Fil RSS2 des commentaires"
+
+# -------------------------------------
+
+msgid "Mrvb: tags"
+msgstr "Mrvb : mots-clés"
+
+msgid "tags list"
+msgstr "liste des mots-clés"
+
+msgid "Tags to exclude (separated by commas or line breaks):"
+msgstr "Mots-clés à exclure (séparés par virgules ou sauts de ligne)&nbsp;:"
+
+# -------------------------------------
+
+msgid "Mrvb: text"
+msgstr "Mrvb : texte"
+
+msgid "text"
+msgstr "texte"
+
