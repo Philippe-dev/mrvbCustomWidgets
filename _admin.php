@@ -1,4 +1,5 @@
 <?php
+
 # -- BEGIN LICENSE BLOCK ----------------------------------
 #
 # This file is part of mrvbCustomWidgets, a plugin for Dotclear 2
@@ -10,5 +11,7 @@
 #
 # -- END LICENSE BLOCK ------------------------------------
 
-if (!defined('DC_CONTEXT_ADMIN')) { return; }
-require_once dirname(__FILE__).'/_widgets.php';
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
+require_once dirname(__FILE__) . '/_widgets.php';

@@ -16,15 +16,15 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    "mrvbCustomWidgets",
-    "Mrvb customizations of DC2 widgets",
-    "Mirovinben (origin : DC-Team)",
+    'mrvbCustomWidgets',
+    'Mrvb customizations of DC2 widgets',
+    'Mirovinben (origin : DC-Team)',
     '0.5',
     [
         'permissions' => dcCore::app()->auth->makePermissions([dcAuth::PERMISSION_CONTENT_ADMIN]),
         'type'        => 'plugin',
         'dc_min'      => '2.24',
         'support'     => 'http://www.mirovinben.fr/blog/index.php?post/id1428',
-        'details'     => 'http://plugins.dotaddict.org/dc2/details/mrvbCustomWidgets'
+        'details'     => 'http://plugins.dotaddict.org/dc2/details/mrvbCustomWidgets',
     ]
 );
