@@ -484,8 +484,16 @@ class tplMrvbWidgets
         $endlist   = __($w->endlist);
         $modlist   = ($w->modlist === 'list');
         $limit     = abs((int) $w->limit);
-        $objMeta   = new dcMeta(dcCore::app());
-        $rs        = $objMeta->getMeta('tag', $limit);
+
+        $params = ['meta_type' => 'tag'];
+
+        if ($w->limit !== '') {
+            $params['limit'] = abs((int) $w->limit);
+        }
+
+        $rs = dcCore::app()->meta->computeMetaStats(
+            dcCore::app()->meta->getMetadata($params)
+        );
         if ($rs->isEmpty()) {
             return;
         }
@@ -516,21 +524,21 @@ class tplMrvbWidgets
             }
             if (!(in_array($rs->meta_id, $exclude))) {
                 if ($modlist) {
-                    $res .= '<li' . ($class ? ' class="' . $class . '"' : '') . '><a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tag') . '/' . rawurlencode($rs->meta_id) . '" ' . 'class="tag' . $rs->roundpercent . '" ';
+                    $res .= '<li' . ($class ? ' class="' . $class . '"' : '') . '><a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tag') . '/' . rawurlencode((string) $rs->meta_id) . '" ' . 'class="tag' . $rs->roundpercent . '" ';
                     if ($w->showcount == 'showballoon') {
                         $res .= ' title="' . $rs->count . '"';
                     }
-                    $res .= '>' . __($rs->meta_id) . '</a>';
+                    $res .= '>' . __((string) $rs->meta_id) . '</a>';
                     if ($w->showcount == 'showafter') {
                         $res .= ' (' . $rs->count . ')';
                     }
                     $res .= ' </li>';
                 } else {
-                    $res .= '<a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tag') . '/' . rawurlencode($rs->meta_id) . '" ' . 'class="tag' . $rs->roundpercent . $class . '" ';
+                    $res .= '<a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tag') . '/' . rawurlencode((string) $rs->meta_id) . '" ' . 'class="tag' . $rs->roundpercent . $class . '" ';
                     if ($w->showcount == 'showballoon') {
                         $res .= ' title="' . $rs->count . '"';
                     }
-                    $res .= '>' . __($rs->meta_id) . '</a>';
+                    $res .= '>' . __((string) $rs->meta_id) . '</a>';
                     if ($w->showcount == 'showafter') {
                         $res .= ' (' . $rs->count . ')';
                     }
