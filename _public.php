@@ -48,9 +48,11 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
+
         $rs = dcCore::app()->blog->getCategories();
         if ($rs->isEmpty()) {
             return;
@@ -114,8 +116,8 @@ class tplMrvbWidgets
             return;
         }
 
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
 
         try {
@@ -177,8 +179,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $max             = abs((int) $w->limit);
         $params['order'] = 'comment_dt desc';
@@ -215,8 +217,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $params['order']      = 'post_dt desc';
         $params['no_content'] = true;
@@ -277,8 +279,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $cssID = str_replace(' ', '', html::escapeHTML($w->CSSid));
 
@@ -298,8 +300,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
 
         $separator               = __($w->separator) . ' ';
@@ -357,8 +359,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $value = isset($GLOBALS['_search']) ? html::escapeHTML($GLOBALS['_search']) : '';
         $cssID = str_replace(' ', '', html::escapeHTML($w->CSSid));
@@ -379,8 +381,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $rs = dcCore::app()->blog->getCategories();
         if ($rs->isEmpty()) {
@@ -439,8 +441,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $entriesAtom  = __($w->entriesAtom);
         $commentsAtom = __($w->commentsAtom);
@@ -474,8 +476,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         if (dcCore::app()->url->type == 'post' && dcCore::app()->ctx->posts instanceof record) {
             dcCore::app()->ctx->meta = dcCore::app()->meta->getMetaRecordset(dcCore::app()->ctx->posts->post_meta, 'tag');
@@ -568,8 +570,8 @@ class tplMrvbWidgets
         if ($w->offline) {
             return;
         }
-        if (($w->homeonly == 1 && dcCore::app()->url->type != 'default') || ($w->homeonly == 2 && dcCore::app()->url->type == 'default')) {
-            return;
+        if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
+            return '';
         }
         $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '') . __($w->text);
 

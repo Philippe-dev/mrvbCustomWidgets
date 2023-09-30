@@ -19,7 +19,7 @@ $this->registerModule(
     'mrvbCustomWidgets',
     'Mrvb customizations of DC2 widgets',
     'Mirovinben (origin : DC-Team)',
-    '0.5.1',
+    '0.5.2',
     [
         'permissions' => dcCore::app()->auth->makePermissions([dcAuth::PERMISSION_CONTENT_ADMIN]),
         'type'        => 'plugin',

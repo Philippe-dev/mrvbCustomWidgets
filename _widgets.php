@@ -89,35 +89,10 @@ class mrvbWidgetsBehaviors
             '.',
             'text'
         );
-        $w->mrvbCategories->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbCategories->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbCategories->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbCategories->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbCategories->addHomeOnly();
+        $w->mrvbCategories->addContentOnly();
+        $w->mrvbCategories->addClass();
+        $w->mrvbCategories->addOffline();
 
         $w->create('mrvbFeed', __('Mrvb: feed reader'), ['tplMrvbWidgets','mrvb_Feed'], null, __('list of last entries from feed (RSS or Atom)'));
         $w->mrvbFeed->setting(
@@ -155,35 +130,10 @@ class mrvbWidgetsBehaviors
             '-',
             'text'
         );
-        $w->mrvbFeed->setting(
-            'homeonly',
-            __('Display on:'),
-            1,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbFeed->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbFeed->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbFeed->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbFeed->addHomeOnly();
+        $w->mrvbFeed->addContentOnly();
+        $w->mrvbFeed->addClass();
+        $w->mrvbFeed->addOffline();
 
         $w->create('mrvbLastComments', __('Mrvb: last comments'), ['tplMrvbWidgets','mrvb_LastComments'], null, __('list of last comments posted'));
         $w->mrvbLastComments->setting(
@@ -203,35 +153,10 @@ class mrvbWidgetsBehaviors
             false,
             'check'
         );
-        $w->mrvbLastComments->setting(
-            'homeonly',
-            __('Display on:'),
-            1,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbLastComments->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbLastComments->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbLastComments->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbLastComments->addHomeOnly();
+        $w->mrvbLastComments->addContentOnly();
+        $w->mrvbLastComments->addClass();
+        $w->mrvbLastComments->addOffline();
 
         $w->create('mrvbLastPosts', __('Mrvb: last posts'), ['tplMrvbWidgets','mrvb_LastPosts'], null, __('list of last entries published'));
         $w->mrvbLastPosts->setting(
@@ -276,35 +201,10 @@ class mrvbWidgetsBehaviors
             __('Entries limit (0 = all):'),
             10
         );
-        $w->mrvbLastPosts->setting(
-            'homeonly',
-            __('Display on:'),
-            1,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbLastPosts->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbLastPosts->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbLastPosts->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbLastPosts->addHomeOnly();
+        $w->mrvbLastPosts->addContentOnly();
+        $w->mrvbLastPosts->addClass();
+        $w->mrvbLastPosts->addOffline();
 
         $w->create('mrvbNavigation', __('Mrvb: navigation links'), ['tplMrvbWidgets','mrvb_Navigation'], null, __('list of navigation links'));
         $w->mrvbNavigation->setting(
@@ -337,36 +237,11 @@ class mrvbWidgetsBehaviors
             __('Archives'),
             'text'
         );
-        $w->mrvbNavigation->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbNavigation->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbNavigation->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbNavigation->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
-
+        $w->mrvbNavigation->addHomeOnly();
+        $w->mrvbNavigation->addContentOnly();
+        $w->mrvbNavigation->addClass();
+        $w->mrvbNavigation->addOffline();
+        
         $w->create('mrvbPages', __('Mrvb: pages'), ['tplMrvbWidgets','mrvb_Pages'], null, __('pages list'));
         $w->mrvbPages->setting(
             'title',
@@ -424,35 +299,10 @@ class mrvbWidgetsBehaviors
                 __('Descending') => 'desc',
             ]
         );
-        $w->mrvbPages->setting(
-            'homeonly',
-            __('Display on:'),
-            1,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbPages->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbPages->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbPages->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbPages->addHomeOnly();
+        $w->mrvbPages->addContentOnly();
+        $w->mrvbPages->addClass();
+        $w->mrvbPages->addOffline();
 
         $w->create('mrvbSearch', __('Mrvb: search engine'), ['tplMrvbWidgets','mrvb_Search'], null, __('search engine form'));
         $w->mrvbSearch->setting(
@@ -467,35 +317,10 @@ class mrvbWidgetsBehaviors
             'search',
             'text'
         );
-        $w->mrvbSearch->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbSearch->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbSearch->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbSearch->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbSearch->addHomeOnly();
+        $w->mrvbSearch->addContentOnly();
+        $w->mrvbSearch->addClass();
+        $w->mrvbSearch->addOffline();
 
         $w->create('mrvbSubCategories', __('Mrvb: subcategories'), ['tplMrvbWidgets','mrvb_SubCategories'], null, __('hierarchical list of categories'));
         $w->mrvbSubCategories->setting(
@@ -541,35 +366,10 @@ class mrvbWidgetsBehaviors
             'combo',
             $helpcatID
         );
-        $w->mrvbSubCategories->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbSubCategories->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbSubCategories->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbSubCategories->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbSubCategories->addHomeOnly();
+        $w->mrvbSubCategories->addContentOnly();
+        $w->mrvbSubCategories->addClass();
+        $w->mrvbSubCategories->addOffline();
 
         $w->create('mrvbSubscribe', __('Mrvb: subscribe links'), ['tplMrvbWidgets','mrvbSubscribe'], null, __('feed subscription links'));
         $w->mrvbSubscribe->setting(
@@ -602,35 +402,10 @@ class mrvbWidgetsBehaviors
             __('Comments RSS2 feed'),
             'text'
         );
-        $w->mrvbSubscribe->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbSubscribe->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbSubscribe->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbSubscribe->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbSubscribe->addHomeOnly();
+        $w->mrvbSubscribe->addContentOnly();
+        $w->mrvbSubscribe->addClass();
+        $w->mrvbSubscribe->addOffline();
 
         $w->create('mrvbTags', __('Mrvb: tags'), ['tplMrvbWidgets','mrvb_Tags'], null, __('tags list'));
         $w->mrvbTags->setting(
@@ -710,35 +485,10 @@ class mrvbWidgetsBehaviors
             '.',
             'text'
         );
-        $w->mrvbTags->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbTags->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbTags->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbTags->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbTags->addHomeOnly();
+        $w->mrvbTags->addContentOnly();
+        $w->mrvbTags->addClass();
+        $w->mrvbTags->addOffline();
 
         $w->create('mrvbText', __('Mrvb: text'), ['tplMrvbWidgets','mrvb_Text'], null, __('text'));
         $w->mrvbText->setting(
@@ -753,34 +503,9 @@ class mrvbWidgetsBehaviors
             '',
             'textarea'
         );
-        $w->mrvbText->setting(
-            'homeonly',
-            __('Display on:'),
-            0,
-            'combo',
-            [
-                __('All pages')           => 0,
-                __('Home page only')      => 1,
-                __('Except on home page') => 2,
-            ]
-        );
-        $w->mrvbText->setting(
-            'content_only',
-            __('Content only'),
-            0,
-            'check'
-        );
-        $w->mrvbText->setting(
-            'CSSclass',
-            __('CSS class:'),
-            '',
-            'text'
-        );
-        $w->mrvbText->setting(
-            'offline',
-            __('To put off line'),
-            false,
-            'check'
-        );
+        $w->mrvbText->addHomeOnly();
+        $w->mrvbText->addContentOnly();
+        $w->mrvbText->addClass();
+        $w->mrvbText->addOffline();
     }
 }
