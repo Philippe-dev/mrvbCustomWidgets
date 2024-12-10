@@ -11,6 +11,8 @@
 #
 # -- END LICENSE BLOCK ------------------------------------
 
+use Dotclear\Helper\Html\Html;
+
 if (!defined('DC_RC_PATH')) {
     return;
 }
@@ -28,7 +30,7 @@ function mrvb_ListToArray($list)
         $tab = [];
         $j   = 0;
         for ($i = 0 ; $i < count($t) ; $i++) {
-            $t[$i] = html::clean(trim($t[$i]));
+            $t[$i] = Html::clean(trim($t[$i]));
             if (strlen($t[$i]) > 0) {
                 $tab[$j] = $t[$i];
                 ++$j;
@@ -62,7 +64,7 @@ class tplMrvbWidgets
         $modlist   = ($w->modlist === 'list');
         $exclude   = mrvb_ListToArray($w->excludeID);
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         ($modlist ? $res .= '<ul>' : $res .= '<p class="list">');
         $res .= "\n";
         while ($rs->fetch()) {
@@ -79,7 +81,7 @@ class tplMrvbWidgets
                     if ($w->showcount == 'showballoon') {
                         $res .= ' title="' . $postcount . '"';
                     }
-                    $res .= '>' . html::escapeHTML(__($rs->cat_title)) . '</a>';
+                    $res .= '>' . Html::escapeHTML(__($rs->cat_title)) . '</a>';
                     if ($w->showcount == 'showafter') {
                         $res .= ' (' . $postcount . ')';
                     }
@@ -89,7 +91,7 @@ class tplMrvbWidgets
                     if ($w->showcount == 'showballoon') {
                         $res .= ' title="' . $postcount . '"';
                     }
-                    $res .= '>' . html::escapeHTML(__($rs->cat_title)) . '</a>';
+                    $res .= '>' . Html::escapeHTML(__($rs->cat_title)) . '</a>';
                     if ($w->showcount == 'showafter') {
                         $res .= ' (' . $postcount . ')';
                     }
@@ -134,7 +136,7 @@ class tplMrvbWidgets
         $separator = ' ' . substr($w->separator, 0, 1) . ' ';
         setlocale(LC_ALL, '');
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         $res .= '<ul>' . "\n";
         $i = 0;
         foreach ($feed->items as $item) {
@@ -152,16 +154,16 @@ class tplMrvbWidgets
             } else {
                 $date = '';
             }
-            $url = html::escapeHTML($item->link);
+            $url = Html::escapeHTML($item->link);
             $li  = $formitem;
             if (strpos($formitem, '%date%') !== false) {
                 $li = str_replace('%date%', $date, $li);
             }
             if (strpos($formitem, '%title%') !== false) {
-                $li = str_replace('%title%', $link ? '<a href="' . html::escapeHTML($url) . '">' . $title . '</a>' : $title, $li);
+                $li = str_replace('%title%', $link ? '<a href="' . Html::escapeHTML($url) . '">' . $title . '</a>' : $title, $li);
             }
             if (strpos($formitem, '%date+title%') !== false) {
-                $li = str_replace('%date+title%', $link ? '<a href="' . html::escapeHTML($url) . '">' . $date . $separator . $title . '</a>' : $date . $separator . $title, $li);
+                $li = str_replace('%date+title%', $link ? '<a href="' . Html::escapeHTML($url) . '">' . $date . $separator . $title . '</a>' : $date . $separator . $title, $li);
             }
             $res .= '<li>' . $li . '</li>' . "\n";
             $i++;
@@ -189,7 +191,7 @@ class tplMrvbWidgets
             return;
         }
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         $res .= '<ul>' . "\n";
         $i = 0;
         while ($rs->fetch()) {
@@ -198,8 +200,8 @@ class tplMrvbWidgets
                     $res .= '<li class="' .
                     ((bool) $rs->comment_trackback ? 'last-tb' : 'last-comment') .
                     '"><a href="' . $rs->getPostURL() . '#c' . $rs->comment_id . '">' .
-                    html::escapeHTML($rs->post_title) . ' - ' .
-                    html::escapeHTML($rs->comment_author) .
+                    Html::escapeHTML($rs->post_title) . ' - ' .
+                    Html::escapeHTML($rs->comment_author) .
                     '</a></li>' . "\n";
                     ++$i;
                 } else {
@@ -253,7 +255,7 @@ class tplMrvbWidgets
             return;
         }
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         $res .= '<ul>' . "\n";
         $i = 0;
         while ($rs->fetch()) {
@@ -264,7 +266,7 @@ class tplMrvbWidgets
                         $class = ' class="post-current"';
                     }
                     $res .= '<li' . $class . '><a href="' . $rs->getURL() . '">' .
-                    html::escapeHTML($rs->post_title) . '</a></li>' . "\n";
+                    Html::escapeHTML($rs->post_title) . '</a></li>' . "\n";
                     ++$i;
                 }
             }
@@ -282,9 +284,9 @@ class tplMrvbWidgets
         if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
             return '';
         }
-        $cssID = str_replace(' ', '', html::escapeHTML($w->CSSid));
+        $cssID = str_replace(' ', '', Html::escapeHTML($w->CSSid));
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         $res .= '<ul>' . "\n";
         if (dcCore::app()->url->type != 'default') {
             $res .= '<li class="topnav-home">' . '<a href="' . dcCore::app()->blog->url . '">' . ($w->home ? $w->home : __('Home')) . '</a><span>' . ($w->separator ? $w->separator : '&nbsp;-&nbsp;') . '</span></li>' . "\n";
@@ -325,7 +327,7 @@ class tplMrvbWidgets
             return;
         }
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         ($modlist ? $res .= '<ul>' : $res .= '<p class="list">');
         $res .= "\n";
         $exclude = mrvb_ListToArray($w->excludeID);
@@ -336,9 +338,9 @@ class tplMrvbWidgets
             }
             if (!(in_array($rs->post_id, $exclude))) {
                 if ($modlist) {
-                    $res .= '<li' . $class . '><a href="' . $rs->getURL() . '">' . html::escapeHTML(__($rs->post_title)) . '</a></li>' . "\n";
+                    $res .= '<li' . $class . '><a href="' . $rs->getURL() . '">' . Html::escapeHTML(__($rs->post_title)) . '</a></li>' . "\n";
                 } else {
-                    $res .= '<span' . $class . '><a href="' . $rs->getURL() . '">' . html::escapeHTML(__($rs->post_title)) . '</a></span><span class="separator">' . $separator . '</span>' . "\n";
+                    $res .= '<span' . $class . '><a href="' . $rs->getURL() . '">' . Html::escapeHTML(__($rs->post_title)) . '</a></span><span class="separator">' . $separator . '</span>' . "\n";
                 }
             }
         }
@@ -362,10 +364,10 @@ class tplMrvbWidgets
         if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
             return '';
         }
-        $value = isset($GLOBALS['_search']) ? html::escapeHTML($GLOBALS['_search']) : '';
-        $cssID = str_replace(' ', '', html::escapeHTML($w->CSSid));
+        $value = isset($GLOBALS['_search']) ? Html::escapeHTML($GLOBALS['_search']) : '';
+        $cssID = str_replace(' ', '', Html::escapeHTML($w->CSSid));
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         $res .= '<form action="' . dcCore::app()->blog->url . '" method="get">' . "\n" .
         '<fieldset>' . "\n" .
         '<p><input type="text" size="10" maxlength="255" id="q" name="q" value="' . $value . '" /> ' .
@@ -396,7 +398,7 @@ class tplMrvbWidgets
         $ref_level = $level = $rs->level - 1;
         $cat_level = 0;
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) : '');
         while ($rs->fetch()) {
             if (!(in_array($rs->cat_id, $exclude))) {
                 if ($rs->level <= $max_level) {
@@ -421,7 +423,7 @@ class tplMrvbWidgets
                     if ($w->showcount == 'showballoon') {
                         $res .= ' title="' . $postcount . '"';
                     }
-                    $res .= '>' . html::escapeHTML(__($rs->cat_title)) . '</a>';
+                    $res .= '>' . Html::escapeHTML(__($rs->cat_title)) . '</a>';
                     if ($w->showcount == 'showafter') {
                         $res .= ' (' . $postcount . ')';
                     }
@@ -449,7 +451,7 @@ class tplMrvbWidgets
         $entriesRSS2  = __($w->entriesRSS2);
         $commentsRSS2 = __($w->commentsRSS2);
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         if (strlen($entriesAtom) > 0 || strlen($commentsAtom) > 0) {
             $res .= '<ul class="feed-atom">' . "\n";
             $res .= ($entriesAtom ? '<li><a class="feed entries" href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('feed') . '/atom">' . $entriesAtom . '</a></li>' : '');
@@ -510,7 +512,7 @@ class tplMrvbWidgets
         $rs->sort($sort, $order);
         $exclude = mrvb_ListToArray($w->exclude);
 
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '');
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '');
         ($modlist ? $res .= '<ul>' : $res .= '<p class="list">');
         $res .= "\n";
         while ($rs->fetch()) {
@@ -559,7 +561,7 @@ class tplMrvbWidgets
         }
         $res .= "\n";
         if (dcCore::app()->url->getBase('tags')) {
-            $res .= '<p class="goTags"><a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tags') . '">' . html::escapeHTML(__($w->alltagslinktitle)) . '</a></p>';
+            $res .= '<p class="goTags"><a href="' . dcCore::app()->blog->url . dcCore::app()->url->getBase('tags') . '">' . Html::escapeHTML(__($w->alltagslinktitle)) . '</a></p>';
         }
 
         return $w->renderDiv($w->content_only, 'tags mrvbtags ' . $w->CSSclass, '', $res);
@@ -573,7 +575,7 @@ class tplMrvbWidgets
         if (!$w->checkHomeOnly(dcCore::app()->url->type)) {
             return '';
         }
-        $res = ($w->title ? $w->renderTitle(html::escapeHTML($w->title)) . "\n" : '') . __($w->text);
+        $res = ($w->title ? $w->renderTitle(Html::escapeHTML($w->title)) . "\n" : '') . __($w->text);
 
         return $w->renderDiv($w->content_only, 'text mrvbtext ' . $w->CSSclass, '', $res);
     }

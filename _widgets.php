@@ -11,6 +11,8 @@
 #
 # -- END LICENSE BLOCK ------------------------------------
 
+use Dotclear\Helper\Html\Html;
+
 if (!defined('DC_RC_PATH')) {
     return;
 }
@@ -25,8 +27,8 @@ class mrvbWidgetsBehaviors
         $helpcatID = [];
         $listcatID = ['' => '', __('Uncategorized') => 'null'];
         while ($rs->fetch()) {
-            $helpcatID[str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . html::escapeHTML($rs->cat_title) . ' (ID=' . $rs->cat_id . ')'] = $rs->cat_id;
-            $listcatID[str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . html::escapeHTML($rs->cat_title) . ' (ID=' . $rs->cat_id . ')'] = $rs->cat_id;
+            $helpcatID[str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . Html::escapeHTML($rs->cat_title) . ' (ID=' . $rs->cat_id . ')'] = $rs->cat_id;
+            $listcatID[str_repeat('&nbsp;&nbsp;', $rs->level - 1) . ($rs->level - 1 == 0 ? '' : '&bull; ') . Html::escapeHTML($rs->cat_title) . ' (ID=' . $rs->cat_id . ')'] = $rs->cat_id;
         }
 
         $w->create('mrvbCategories', __('Mrvb: categories'), ['tplMrvbWidgets','mrvb_Categories'], null, __('categories list'));
