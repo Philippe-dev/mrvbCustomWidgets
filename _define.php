@@ -19,12 +19,12 @@ $this->registerModule(
     'mrvbCustomWidgets',
     'Mrvb customizations of DC2 widgets',
     'Mirovinben (origin : DC-Team)',
-    '0.6',
+    '0.7',
     [
-        'date'        => '2025-08-11T00:00:17+0100',
+        'date'        => '2025-09-08T00:00:08+0100',
+        'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
-        'dc_min'      => '2.34',
         'support'     => 'https://www.mirovinben.fr/blog/index.php?post/id1428',
         'details'     => 'https://plugins.dotaddict.org/dc2/details/mrvbCustomWidgets',
     ]
