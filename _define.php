@@ -19,9 +19,9 @@ $this->registerModule(
     'mrvbCustomWidgets',
     'Mrvb customizations of DC2 widgets',
     'Mirovinben (origin : DC-Team)',
-    '0.7',
+    '0.8',
     [
-        'date'        => '2025-09-08T00:00:08+0100',
+        'date'        => '2025-10-01T00:00:08+0100',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
